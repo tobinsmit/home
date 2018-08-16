@@ -1,2 +1,1 @@
-# home
-My personal website
+# homepage
