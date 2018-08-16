@@ -1,10 +1,11 @@
+	const particalRes = 150;
 
 	var canvas = document.querySelector("#scene"),
 		ctx = canvas.getContext("2d"),
 		particles = [],
 		amount = 0,
 		mouse = {x:0,y:0},
-		radius = 1;
+		radius = 3;
 
 	var colors = ["#468966","#FFF0A5", "#FFB03B","#B64926", "#8E2800"];
 
@@ -20,9 +21,11 @@
 			x : x,
 			y: y
 		};
-		this.r =  Math.random()*5 + 2;
-		this.vx = (Math.random()-0.5)*20;
-		this.vy = (Math.random()-0.5)*20;
+		this.x = this.dest.x + (Math.random()-0.5)*100;
+		this.y = this.dest.y + (Math.random()-0.5)*100;
+		this.r =  Math.random()*3 + 3;
+		this.vx = (Math.random()-0.5)*2;
+		this.vy = (Math.random()-0.5)*2;
 		this.accX = 0;
 		this.accY = 0;
 		this.friction = Math.random()*0.05 + 0.94;
@@ -84,8 +87,10 @@ function onTouchEnd(e){
 
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-		ctx.font = "bold "+(ww/10)+"px sans-serif";
+		ctx.font = "bold "+(ww/10)+"px 'Patua One'";
 		ctx.textAlign = "center";
+		ctx.textBaseline="middle";
+
 		ctx.fillText(copy.value, ww/2, wh/2);
 
 		var data  = ctx.getImageData(0, 0, ww, wh).data;
@@ -93,8 +98,8 @@ function onTouchEnd(e){
 		ctx.globalCompositeOperation = "screen";
 
 		particles = [];
-		for(var i=0;i<ww;i+=Math.round(ww/150)){
-			for(var j=0;j<wh;j+=Math.round(ww/150)){
+		for(var i=0;i<ww;i+=Math.round(ww/particalRes)){
+			for(var j=0;j<wh;j+=Math.round(ww/particalRes)){
 				if(data[ ((i + j*ww)*4) + 3] > 150){
 					particles.push(new Particle(i,j));
 				}
