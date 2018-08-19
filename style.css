@@ -41,13 +41,6 @@
   /* salmon on ice */
 }
 
-/* Links */
-a,
-a:focus,
-a:hover {
-  color: #fff;
-}
-
 /* Custom default button */
 .btn-secondary,
 .btn-secondary:hover,
@@ -141,12 +134,13 @@ body {
 }
 @media (max-width: 576px) {
   .cover .cover-heading {
-    font-size: 10vw;
+    font-size: 17vw;
     color: orange;
   }
 }
 
 .album {
+  max-width: 1200px;
   padding-left: 5vw;
   padding-right: 5vw;
 }
