@@ -10,6 +10,7 @@
 	var colors = ["#468966","#FFF0A5", "#FFB03B","#B64926", "#8E2800"];
 
 	var copy = document.querySelector("#copy");
+	// var copy.value = "Tobin\n♥\nMolly";
 
 	var ww = canvas.width = window.innerWidth;
 	var wh = canvas.height = window.innerHeight;
@@ -61,7 +62,6 @@
 			this.vx += this.accX;
 			this.vy += this.accY;
 		}
-
 	}
 
 	function onMouseMove(e){
@@ -76,10 +76,10 @@
     }
 	}
 
-function onTouchEnd(e){
-  mouse.x = -9999;
-  mouse.y = -9999;
-}
+	function onTouchEnd(e){
+	  mouse.x = -9999;
+	  mouse.y = -9999;
+	}
 
 	function initScene(){
 		ww = canvas.width = window.innerWidth;

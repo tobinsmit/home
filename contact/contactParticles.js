@@ -25,12 +25,13 @@ var resHalfCeil=0;
 
 function canv_mousemove(evt)
 {
+  console.log("Mouse event");
   mx=evt.clientX-canv.offsetLeft;
   my=evt.clientY-canv.offsetTop;
 }
 
-function Pixel(homeX,homeY)
-{
+function Pixel(homeX,homeY) {
+  console.log("Pixel");
   this.homeX=homeX;
   this.homeY=homeY;
   
@@ -45,8 +46,9 @@ function Pixel(homeX,homeY)
   this.xVelocity=(Math.random()-0.5)*0; // mine
   this.yVelocity=(Math.random()-0.5)*0;
 }
-Pixel.prototype.move=function()
-{
+
+Pixel.prototype.move = function() {
+  // console.log("Pixel.move");
   var homeDX=this.homeX-this.x;
   var homeDY=this.homeY-this.y;
   var homeDistance=Math.sqrt(Math.pow(homeDX,2) + Math.pow(homeDY,2));
@@ -85,12 +87,13 @@ function $(id)
   return document.getElementById(id);
 }
 
-function timer()
-{
-  if(!timerRunning)
-  {
+function timer(){
+  console.log("timer");
+  if(!timerRunning) {
     timerRunning=true;
     setTimeout(timer,33);
+      // console.log("drawPixels pixels.length: " + pixels.length);
+
     for(var i=0;i<pixels.length;i++)
     {
       pixels[i].move();
@@ -102,15 +105,13 @@ function timer()
     n++;
     if(n%10==0 && (cw!=document.body.clientWidth || ch!=document.body.clientHeight)) body_resize();
     timerRunning=false;
-  }
-  else
-  {
+  } else {
     setTimeout(timer,10);
   }
 }
 
-function drawPixels()
-{
+function drawPixels(){
+  console.log("drawPixels count:" + pixels.length);
   var imageData=ctx.createImageData(cw,ch);
   var actualData=imageData.data;
 
@@ -147,6 +148,7 @@ function readWords()
 
 function init()
 {
+  console.log("init");
   readWords();
   
   var fontSize=40;
@@ -182,8 +184,7 @@ function init()
     {
       i=(y*imageData.width + x)*4;
       
-      if(imageData.data[i+3]>128)
-      {
+      if(imageData.data[i+3]>128) {
         if(index >= pixels.length)
         {
           pixels[index]=new Pixel(x,y);

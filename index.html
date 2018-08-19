@@ -15,8 +15,10 @@
   </head>
 
   <body class="text-center">
+    <canvas id="canv"></canvas>
+    <canvas id="fakeCanv" style="display: none"></canvas>
 
-    <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div class="d-flex w-100 h-100 p-3 mx-auto flex-column" style="position: absolute;">
       <nav class="navbar navbar-expand-sm navbar-tobin navbar-light">
 
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +41,7 @@
       </nav>
 
       <div class="cover container narrow pt-4">
-        <h1 class="cover-heading">Tobin Smit</h1>
+        <h1 class="cover-heading" id="staticTitle">Tobin K Smit</h1>
         <p class="lead">An engineering student at UNSW. A problem solver. One day he hopes to make something that impresses his mum.</p>
         <p class="lead">Weaknesses: Public speaking, Shakespeare</p>
         <!-- <p class="lead">
@@ -62,7 +64,7 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <!-- <script src="../../assets/js/vendor/popper.min.js"></script> -->
     <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- <script src="/contact/myParticles.js"></script> -->
+    <script src="/js/particles.js"></script>
 
   </body>
 </html>
