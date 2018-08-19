@@ -25,13 +25,13 @@ var resHalfCeil=0;
 
 function canv_mousemove(evt)
 {
-  console.log("Mouse event");
+  // console.log("Mouse event");
   mx=evt.clientX-canv.offsetLeft;
   my=evt.clientY-canv.offsetTop;
 }
 
 function Pixel(homeX,homeY) {
-  console.log("Pixel");
+  // console.log("Pixel");
   this.homeX=homeX;
   this.homeY=homeY;
   
@@ -88,7 +88,7 @@ function $(id)
 }
 
 function timer(){
-  console.log("timer");
+  // console.log("timer");
   if(!timerRunning) {
     timerRunning=true;
     setTimeout(timer,33);
@@ -111,7 +111,7 @@ function timer(){
 }
 
 function drawPixels(){
-  console.log("drawPixels count:" + pixels.length);
+  // console.log("drawPixels count:" + pixels.length);
   var imageData=ctx.createImageData(cw,ch);
   var actualData=imageData.data;
 
