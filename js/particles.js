@@ -1,7 +1,19 @@
-const startPosDeviation = 0; // 100
-const startVelDeviation = 0; // 0
+// Window/Resolution values
+var windowResMultipiler = 1;
+console.log(window.devicePixelRatio);
+windowResMultipiler = window.devicePixelRatio;
+const topPadding = 110 * windowResMultipiler; // 110
+const lagTime = 15; // 10
+var wh = window.innerHeight;
+var ww = window.innerWidth;
+var ch = windowResMultipiler * wh;
+var cw = windowResMultipiler * ww;
+
+// Particle values
+const startPosDeviation = 20; // 100, 20
+const startVelDeviation = 10; // 0, 10
 const friction = 0.93; // 0.92
-const particleSize = 1; // 1
+const particleSize = 1 * windowResMultipiler; // 1
 const sizeHalfFloor = Math.floor(particleSize/2)
 const sizeHalfCeil = Math.ceil(particleSize/2)
 const particleRadius = 1; // 1 ?
@@ -9,16 +21,17 @@ const particleDarkness = 200;
 const particleDarkChangeCoef = 1;
 const particleDarknessMin = 100;
 const homeForceCoef = 0.01; // 0.1
-const mouseForceCoef = 5000; // 10000 // force = min(coef/mouseDistanceSquared, coef)
-const lagTime = 15; // 10
+const mouseForceCoef = 5 * 1000 * Math.pow(windowResMultipiler, 3); // 5 // force = min(coef/mouseDistanceSquared, coef)
 
-var fontSize = ww/10;
+// Text values
+var fontSize = ww/10
 var fontSize = 100;
-// const words = "Hello World";
+var fontSize = fontSize * windowResMultipiler;
 var words = "Tobin Smit";
 // words = words.replace(" ", String.fromCharCode(8202));
 const lines = words.split('\n');
 
+// Setup
 var canvas = $('canv');
 var context = canvas.getContext("2d");
 var fakeCanvas = $('fakeCanv');
@@ -26,9 +39,6 @@ var fakecontext = fakeCanvas.getContext("2d");
 var data;
 var particles = [];
 var mouse = {x: 0, y: 0};
-var wh = window.innerHeight;
-var ww = window.innerWidth;
-
 
 
 function Particle(x,y){
@@ -74,17 +84,23 @@ Particle.prototype.move = function() {
   this.x += this.vx;
   this.y += this.vy;
 
-  this.darkness = Math.max(particleDarkness - particleDarkChangeCoef * homeDistance, particleDarknessMin);
+  this.darkness = Math.max(particleDarkness - particleDarkChangeCoef * homeDistance / Math.pow(windowResMultipiler,0.5), particleDarknessMin);
 }
 
 function initScene(){
   console.log("initScene");
   var wh = window.innerHeight;
   var ww = window.innerWidth;
-  canvas.height = wh;
-  canvas.width = ww;
-  fakeCanvas.height = wh;
-  fakeCanvas.width = ww;
+  var ch = windowResMultipiler * wh;
+  var cw = windowResMultipiler * ww;
+  canvas.height = ch;
+  canvas.width = cw;
+  canvas.style.height = wh + "px";
+  canvas.style.width = ww + "px";
+  fakeCanvas.height = ch;
+  fakeCanvas.width = cw;
+  fakeCanvas.style.height = wh + "px";
+  fakeCanvas.style.width = ww + "px";
 
   // Temporary rect to measure text
   fakecontext.clearRect(0, 0, canvas.width, canvas.height);
@@ -100,7 +116,7 @@ function initScene(){
       maxLineWidth = thisLineWidth;
     }
   }
-  while (maxLineWidth > ww-50 || fontSize * lines.length > wh - 50) {
+  while (maxLineWidth > cw-50 || fontSize * lines.length > ch - 50) {
     fontSize -= 5;
     fakecontext.font = "bold " + fontSize + "px 'Patua One'";
 
@@ -119,22 +135,22 @@ function initScene(){
   fakecontext.textAlign = "center";
   fakecontext.textBaseline = "middle";
   for (var i = 0; i < lines.length; i++) {
-    ypos = wh/2 - fontSize * (lines.length / 2 - (i + 0.5) );
-    ypos = 110 + fontSize * (i + 0.5);
-    fakecontext.fillText(lines[i], ww/2, ypos)
+    ypos = ch/2 - fontSize * (lines.length / 2 - (i + 0.5) );
+    ypos = topPadding + fontSize * (i + 0.5);
+    fakecontext.fillText(lines[i], cw/2, ypos)
   }
 
   // Save data and clear rect
-  data = fakecontext.getImageData(0, 0, ww, wh).data;
-  context.clearRect(0, 0, ww, wh);
+  data = fakecontext.getImageData(0, 0, cw, ch).data;
+  context.clearRect(0, 0, cw, ch);
   // context.globalCompositeOperation = "screen";
 
   // Create particles
   // particles = [];
   var index = 0;
-  for(var x = 0; x < ww; x += particleSize) {
-    for(var y = 0; y < wh; y += particleSize) {
-      const dataIndex = (y * ww + x) * 4 + 3;
+  for(var x = 0; x < cw; x += particleSize) {
+    for(var y = 0; y < ch; y += particleSize) {
+      const dataIndex = (y * cw + x) * 4 + 3;
       if(data[dataIndex] > 128){
         if (index < particles.length) {
           particles[index].home.x = x;          
@@ -154,7 +170,7 @@ function drawPixels() {
     particles[i].move();
   }
 
-  var imageData = context.createImageData(ww,wh);
+  var imageData = context.createImageData(cw,ch);
   var actualData = imageData.data;
 
   var index;
@@ -167,8 +183,8 @@ function drawPixels() {
     goodX = Math.floor(particles[i].x);
     goodY = Math.floor(particles[i].y);
     
-    for(realX = goodX - sizeHalfFloor; realX <= goodX + sizeHalfCeil && realX >= 0 && realX < ww; realX++) {
-      for(realY = goodY - sizeHalfFloor; realY <= goodY + sizeHalfCeil && realY >= 0 && realY < wh; realY++) {
+    for(realX = goodX - sizeHalfFloor; realX <= goodX + sizeHalfCeil && realX >= 0 && realX < cw; realX++) {
+      for(realY = goodY - sizeHalfFloor; realY <= goodY + sizeHalfCeil && realY >= 0 && realY < ch; realY++) {
         index = (realY * imageData.width + realX) * 4 + 3;
         // actualData[index] = this.brightness;
         actualData[index] = particles[i].darkness;
@@ -188,8 +204,8 @@ function onMouseMove(e){
   $('canv').style.display = "initial";
   // $('fakeCanv').style.display = "initial";
   // console.log("mouse move")
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
+  mouse.x = windowResMultipiler*e.clientX;
+  mouse.y = windowResMultipiler*e.clientY;
 }
 function onTouchMove(e){
   // console.log("touch move")
