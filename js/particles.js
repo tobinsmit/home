@@ -1,6 +1,6 @@
 // Window/Resolution values
 var windowResMultipiler = 1;
-console.log(window.devicePixelRatio);
+console.log("Pixel ratio: " + window.devicePixelRatio);
 windowResMultipiler = window.devicePixelRatio;
 const topPadding = 110 * windowResMultipiler; // 110
 const lagTime = 15; // 10
@@ -88,7 +88,7 @@ Particle.prototype.move = function() {
 }
 
 function initScene(){
-  console.log("initScene");
+  console.log("Initiating scene");
   var wh = window.innerHeight;
   var ww = window.innerWidth;
   var ch = windowResMultipiler * wh;
@@ -219,6 +219,20 @@ function onTouchEnd(e){
   mouse.y = -1;
 }
 
+function checkFonts() {
+  if (!fontsLoaded) {
+    console.log("Fonts not loaded");
+    setTimeout(checkFonts, 10);
+  } else {
+    console.log("Fonts loaded");    
+    initScene();
+    drawPixels();
+  }
+}
+
+function $(id) {
+  return document.getElementById(id);
+}
 
 
 
@@ -227,11 +241,15 @@ window.addEventListener("mousemove", onMouseMove);
 window.addEventListener("touchmove", onTouchMove);
 window.addEventListener("touchend", onTouchEnd);
 
-initScene();
-drawPixels();
 // window.dispatchEvent(new Event('mousemove'));
 
-function $(id) {
-  return document.getElementById(id);
-}
+var fontsLoaded = false;
+WebFont.load({
+  google: {
+    families: ['Patua One']
+  },
+  active: function() {fontsLoaded = true;}
+});
+checkFonts();
+
 

@@ -135,7 +135,7 @@ body {
 }
 
 .cover .cover-heading {
-  font-family: 'Patua One', cursive;
+  font-family: 'Patua One', Arial;
   font-size: 100px;
   color: var(--header-color);
 }
