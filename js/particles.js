@@ -109,7 +109,7 @@ function initScene(){
 
   // Find max font size for it all to fit
   var maxLineWidth = 0;
-  fakecontext.font = "bold " + fontSize + "px 'Patua One'";
+  fakecontext.font = "bold " + fontSize + "px 'Patua One', 'Arial'";
   for(var i = 0; i < lines.length; i++) {
     var thisLineWidth = fakecontext.measureText(lines[i]).width;
     if (thisLineWidth > maxLineWidth) {
@@ -118,8 +118,7 @@ function initScene(){
   }
   while (maxLineWidth > cw-50 || fontSize * lines.length > ch - 50) {
     fontSize -= 5;
-    fakecontext.font = "bold " + fontSize + "px 'Patua One'";
-
+    fakecontext.font = "bold " + fontSize + "px 'Patua One', 'Arial'";
     maxLineWidth = 0;
     for(var i = 0; i < lines.length; i++) {
       var thisLineWidth = fakecontext.measureText(lines[i]).width;
@@ -204,14 +203,14 @@ function onMouseMove(e){
   $('canv').style.display = "initial";
   // $('fakeCanv').style.display = "initial";
   // console.log("mouse move")
-  mouse.x = windowResMultipiler*e.clientX;
-  mouse.y = windowResMultipiler*e.clientY;
+  mouse.x = e.clientX * windowResMultipiler;
+  mouse.y = e.clientY * windowResMultipiler;
 }
 function onTouchMove(e){
   // console.log("touch move")
   if(e.touches.length > 0 ){
-    mouse.x = e.touches[0].clientX;
-    mouse.y = e.touches[0].clientY;
+    mouse.x = e.touches[0].clientX * windowResMultipiler;
+    mouse.y = e.touches[0].clientY * windowResMultipiler;
   }
 }
 function onTouchEnd(e){
