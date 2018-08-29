@@ -1,7 +1,7 @@
 // Window/Resolution values
 var windowResMultipiler = 1;
 console.log("Pixel ratio: " + window.devicePixelRatio);
-windowResMultipiler = window.devicePixelRatio;
+windowResMultipiler = Math.ceil(window.devicePixelRatio);
 const topPadding = 110 * windowResMultipiler; // 110
 const lagTime = 15; // 10
 var wh = window.innerHeight;
@@ -109,6 +109,7 @@ function initScene(){
 
   // Find max font size for it all to fit
   var maxLineWidth = 0;
+  fakecontext.font = "bold " + fontSize + "px 'Arial'";
   fakecontext.font = "bold " + fontSize + "px 'Patua One', 'Arial'";
   for(var i = 0; i < lines.length; i++) {
     var thisLineWidth = fakecontext.measureText(lines[i]).width;
