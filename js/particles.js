@@ -209,8 +209,8 @@ function drawPixels() {
     nDraws++;
     console.log("drawPixels details: " + (end-start) + "ms, avg: " + avgDrawTime + "ms particleSize: " + particleSize);
   }
-  if (nDraws == 1 && particleSize < 8 && avgDrawTime > 35) {
-    particleSize += 2;
+  if (nDraws == 1 && particleSize < 8 && avgDrawTime > 50) {
+    particleSize += 1;
     lagTime = 0;
     avgDrawTime = 0;
     nDraws = 0;
