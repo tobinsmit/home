@@ -3,19 +3,21 @@ var windowResMultipiler = 1;
 console.log("Pixel ratio: " + window.devicePixelRatio);
 windowResMultipiler = Math.ceil(window.devicePixelRatio);
 const topPadding = 110 * windowResMultipiler; // 110
-const lagTime = 15; // 10
+var lagTime = 15; // 10
 var wh = window.innerHeight;
 var ww = window.innerWidth;
 var ch = windowResMultipiler * wh;
 var cw = windowResMultipiler * ww;
+var nDraws = 0;
+var avgDrawTime = 0;
 
 // Particle values
 const startPosDeviation = 20; // 100, 20
 const startVelDeviation = 10; // 0, 10
 const friction = 0.93; // 0.92
-const particleSize = 1 * windowResMultipiler; // 1
-const sizeHalfFloor = Math.floor(particleSize/2)
-const sizeHalfCeil = Math.ceil(particleSize/2)
+var particleSize = 1 * windowResMultipiler; // 1 * _
+var sizeHalfFloor = Math.floor(particleSize/2)
+var sizeHalfCeil = Math.ceil(particleSize/2)
 const particleRadius = 1; // 1 ?
 const particleDarkness = 200;
 const particleDarkChangeCoef = 1;
@@ -106,6 +108,10 @@ function initScene(){
   fakecontext.clearRect(0, 0, canvas.width, canvas.height);
   context.clearRect(0, 0, canvas.width, canvas.height);
 
+  // Recalulate rendering constants for drawPixels
+  sizeHalfFloor = Math.floor(particleSize/2)
+  sizeHalfCeil = Math.ceil(particleSize/2)
+
 
   // Find max font size for it all to fit
   var maxLineWidth = 0;
@@ -167,6 +173,7 @@ function initScene(){
 }
 
 function drawPixels() {
+  start = Date.now();
   for (var i = 0; i < particles.length; i++) {
     particles[i].move();
   }
@@ -195,6 +202,21 @@ function drawPixels() {
   
   imageData.data = actualData;
   context.putImageData(imageData,0,0);
+
+  if (nDraws <= 1){
+    end = Date.now();
+    avgDrawTime = (avgDrawTime*nDraws + (end-start))/(nDraws+1);
+    nDraws++;
+    console.log("drawPixels details: " + (end-start) + "ms, avg: " + avgDrawTime + "ms particleSize: " + particleSize);
+  }
+  if (nDraws == 1 && particleSize < 8 && avgDrawTime > 35) {
+    particleSize += 2;
+    lagTime = 0;
+    avgDrawTime = 0;
+    nDraws = 0;
+    initScene();
+  }
+
 
   setTimeout(drawPixels,lagTime);
 }
