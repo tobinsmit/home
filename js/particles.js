@@ -221,17 +221,6 @@ function onTouchEnd(e){
   mouse.y = -1;
 }
 
-function checkFonts() {
-  if (!fontsLoaded) {
-    console.log("Fonts not loaded");
-    setTimeout(checkFonts, 10);
-  } else {
-    console.log("Fonts loaded");    
-    initScene();
-    drawPixels();
-  }
-}
-
 function $(id) {
   return document.getElementById(id);
 }
@@ -250,8 +239,12 @@ WebFont.load({
   google: {
     families: ['Patua One']
   },
-  active: function() {fontsLoaded = true;}
+  active: function() {
+    setTimeout( function() {
+      initScene();
+      drawPixels();
+    },100);
+  }
 });
-checkFonts();
 
 
