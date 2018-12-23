@@ -137,7 +137,7 @@ body {
 
 .cover .cover-heading {
   font-family: 'Patua One', Arial;
-  font-size: 100px;
+  font-size: 80px;
   color: var(--header-color);
 }
 @media (max-width: 576px) {
