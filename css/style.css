@@ -153,14 +153,6 @@ body {
   padding-right: 5vw;
 }
 
-.fancy-font {
-  font-family:'Patua One', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
-}
-
-.section {
-  min-height: 100vh;
-}
-
 #sideNav .navbar-nav .nav-item .nav-link{
   font-weight:800;
   letter-spacing:.05rem;
