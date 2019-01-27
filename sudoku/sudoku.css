@@ -9,6 +9,7 @@ table {
   border: 0;
   height: 100%;
   width: 100%;
+  background-color: transparent;
 }
 td {
   height:40px;

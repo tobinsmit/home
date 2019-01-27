@@ -28,9 +28,9 @@
 
   </head>
 
-  <body class="text-center">
-    <canvas id="canv" style="position: absolute; "></canvas>
-    <canvas id="fakeCanv" style="position: absolute; display: none;"></canvas>
+  <body class="text-center" style="display: -ms-flexbox;display: flex;">
+    <canvas id="canv" class="hidden-md-down" style="position: absolute; "></canvas>
+    <canvas id="fakeCanv" class="hidden-md-down" style="position: absolute; display: none;"></canvas>
 
     <div class="d-flex w-100 h-100 p-3 mx-auto flex-column" style="position: relative;">
       <nav class="navbar navbar-expand-sm navbar-tobin navbar-light">
@@ -50,15 +50,12 @@
             <li class="nav-item">
               <a class="nav-link" href="/resume">Resume</a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact</a>
-            </li> -->
           </ul>
         </div>
       </nav>
 
       <div class="cover container medium pt-4">
-        <h1 class="cover-heading" id="staticTitle" style="visibility: hidden;">Tobin Smit</h1>
+        <h1 class="cover-heading hidden-md-up" id="staticTitle">Tobin Smit</h1>
         <p class="lead">An engineering student at <a href="http://engineering.unsw.edu.au/">UNSW</a>. A problem solver. One day he hopes to make something that impresses his girlfriend.</p>
         <p class="lead">Enjoys soccer, basketball, socialising and programming but struggles to do the last two simultaneously.</p>
         <!-- <p class="lead">Weaknesses: Public speaking, Shakespeare</p> -->

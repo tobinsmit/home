@@ -223,7 +223,7 @@ function drawPixels() {
 
 // Mouse handlers
 function onMouseMove(e){
-  $('staticTitle').style.visibility = "hidden";
+  // $('staticTitle').style.visibility = "hidden";
   $('canv').style.display = "initial";
   // $('fakeCanv').style.display = "initial";
   // console.log("mouse move")
