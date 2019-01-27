@@ -1,0 +1,32 @@
+table {
+  margin:1em auto;
+  border-collapse: collapse;
+}
+.in {
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0;
+  border: 0;
+  height: 100%;
+  width: 100%;
+}
+td {
+  height:40px;
+  width:40px;
+  border:1px solid;
+  padding: 0;
+  text-align:center;
+}
+td:nth-child(3n + 1) {
+  border-left: solid;
+}
+td:nth-child(3n) {
+  border-right: solid ;
+}
+
+tr:nth-child(3n) td {
+  border-bottom: solid ;
+}
+tr:nth-child(3n + 1) td {
+  border-top: solid ;
+}
