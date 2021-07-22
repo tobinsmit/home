@@ -1,7 +1,10 @@
 console.log("yep")
 var newChanges = true;
 var tensor = [];
+var matrix = [];
+var solutions = [];
 resetTensor();
+resetMatrix();
 
 function resetTensor() {
   tensor = [];
@@ -10,6 +13,13 @@ function resetTensor() {
       for(var j=0; j<9; j++) {
           tensor[i][j] = new Array(9).fill(true);
       }
+  }
+}
+
+function resetMatrix() {
+  matrix = [];
+  for(var i = 0; i < 9; i++) {
+      matrix[i] = new Array(9).fill(0);
   }
 }
 
@@ -61,23 +71,34 @@ $('#clear').click(function() {
 
 function solve() {
 
+  processMatrx();
+
+  console.log(JSON.stringify(matrix))
+
   solveSimple();
 
-  backtrack();
+  if (confirm("Do you want to try every possibility")) {
+    backtrack();
+  }
 
 }
 
-function solveSimple() {
-  console.log('Simple Solving...');
-
+function processMatrx() {
   resetTensor();
 
   // Read input numbers
   $('.in').each(function() {
     if (1 <= $(this).val() && $(this).val() <= 9) {
-      processNumber($(this).parent().parent().attr('data-row'), $(this).parent().data('col'), $(this).val());
+      row = parseInt($(this).parent().parent().attr('data-row'))
+      col = parseInt($(this).parent().data('col'))
+      val = parseInt($(this).val())
+      processNumber(row, col, val);
     }
   })
+}
+
+function solveSimple() {
+  console.log('Simple Solving...');
 
   newChanges = true;
   while (newChanges == true) {
@@ -92,6 +113,8 @@ function solveSimple() {
 function processNumber(row, col, val) {
   console.log(`processNumber(row ${row}, col ${col}, val ${val})`);
 
+  matrix[row][col] = val
+
   for (var i = 0; i < 9; i++) {
     // Clear row
     tensor[row][i][val-1] = false;
@@ -104,6 +127,7 @@ function processNumber(row, col, val) {
 
     // Clear cell
     tensor[row][col][i] = false;
+
   }
   fillOps();
 }
@@ -265,6 +289,8 @@ function resetWorkMatrix() {
 $('#backtrack').click(backtrack)
 
 function backtrack() {
+  console.log("Backtracking")
+  solutions = []
   resetOrigMatrix();
   resetWorkMatrix();
 
@@ -276,13 +302,16 @@ function backtrack() {
     }
   })
 
+  console.log(checkWorkMatrixComplete())
   if (checkWorkMatrixValid(origMatrix) == false) {
     alert("Sudoku is invalid")
     return
   }
 
   var spot = {r: 0, c: 0, v:1};
-  while (checkWorkMatrixComplete(workMatrix) == false) {
+  var startTime = new Date
+  // while (checkWorkMatrixComplete(workMatrix) == false) {
+  while (!(spot.r == 0 && spot.c == 0 && spot.v == -1)) {
     // sleep(10);
 
     // Keep moving if on orig number
@@ -292,7 +321,6 @@ function backtrack() {
     }
 
     // Update value
-    // console.log(`Spot r${spot.r} c${spot.c} vel${spot.v} val${workMatrix[spot.r][spot.c]}. matrixValidity = ${checkWorkMatrixValid()}`)
     if (workMatrix[spot.r][spot.c] < 9) {
       workMatrix[spot.r][spot.c]++;
       if (checkWorkMatrixValid() == true) {
@@ -306,18 +334,39 @@ function backtrack() {
       spot.v = -1
     }
 
+    if (checkWorkMatrixComplete() == true) {
+      console.log("Found soln:")
+      console.log(workMatrix)
+      console.log(checkWorkMatrixValid())
+      console.log(checkWorkMatrixFull())
+      console.log(checkWorkMatrixComplete())
+      solutions.push(workMatrix)
+      spot.v = 0
+    }
+
     // Update spot
     moveSpot(spot);
 
     // showMatrix(workMatrix);
     // console.log(workMatrix, origMatrix);
 
-    checkWorkMatrixComplete(workMatrix);
   }
 
+  var endTime = new Date
 
-  showMatrix(workMatrix)
+  console.log(`Took ${(endTime - startTime) / 1000} seconds`)
 
+  showMatrix(solutions[0])
+
+  alert(`${solutions.length} solutions found`)
+
+  console.log(solutions)
+  console.log("Sons similarity")
+  for (i =0; i < solutions.length - 1; i++) {
+    a = JSON.stringify(solutions[i])
+    b = JSON.stringify(solutions[i+1])
+    console.log(a == b)
+  }
 }
 
 function checkWorkMatrixValid() {
@@ -354,13 +403,16 @@ function checkWorkMatrixValid() {
 }
 
 function checkWorkMatrixComplete() {
-  if (checkWorkMatrixValid == false) return false;
+  return (checkWorkMatrixValid() && checkWorkMatrixFull());
+}
 
+function checkWorkMatrixFull() {
   for (var r = 0; r < 9; r++) {
     for (var c = 0; c < 9; c++) {
-      if (!(1 <= workMatrix[r][c] && workMatrix[r][c] <= 9)) return false;
+      if (workMatrix[r][c] == 0) return false;
     }
   }
+  return true;
 }
 
 function moveSpot(spot) {
