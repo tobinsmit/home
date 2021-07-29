@@ -31,7 +31,7 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/projects">Projects</a>
+              <a class="nav-link active" href="/portfolio">Portfolio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/resume">Resume</a>
@@ -48,100 +48,202 @@
 
       <div class="cover container narrow pt-4">
         <h1 class="cover-heading">Projects</h1>
-        <!-- <p class="lead">An engineering student at UNSW. A problem solver. One day he hopes to make something that impresses his mum.</p> -->
-        <p class="lead">These are just a few of my projects that are available online.</p>
-        <!-- <p class="lead">
-          <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-        </p> -->
+        <!-- <p class="lead">An engineering student at UNSW. A problem solver. One day he hopes to make something that impresses his girlfriend.</p> -->
+        <p class="lead">These are just a few of my notable projects.</p>
       </div>
 
       <div class="album xlarge py-5 mx-auto">
-        <div class="row">
+        <div class="card-columns" data-masonry='{"percentPosition": true }'> 
+          
           <div class="col-lg-4 col-md-6">
             <div class="card mb-4 shadow-sm">
-              <a href="/sudoku">
-                <img class="card-img-top" data-src="/images/sudoku.png" src="/images/sudoku.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
+              <img class="card-img-top" data-src="/images/coffee-auto.jpg" src="/images/coffee-auto.jpg" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">              <div class="card-body">
+                <h5>Automated a small-batch coffee roaster</h5>
+                <p class="card-text">
+                  Developed a microcontroller based control system to automate a small-batch coffee roaster. 
+                  In this position I coordinated many R&D sub-projects, collaborated with engineers from various backgrounds, 
+                  produced technical documents, and worked with C++, Python, SolidWorks, pneumatics, motors and other automation technologies. 
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted ml-auto">2020</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <img class="card-img-top" data-src="/images/thesis_1.png" src="/images/thesis_1.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
+              <div class="card-body">
+                <h5>Autonomous reversing of a tractor-implement vehicle for path tracking with robust control</h5>
+                <h6>Undergraduate Thesis</h6>
+                <p class="card-text">
+                  Designed various controllers and simulated them with a non-linear kinematic model in MATLAB.
+                  One of these controllers was a model predictive controller (MPC) that I built from the ground up 
+                  to be optimised for this application. Other controllers include a sliding mode controller and a PD controller. 
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- <a class="btn btn-sm btn-outline-light" style="border-color: white;" href="http://thesis.tobinsmit.com" target="_blank">Watch presentation</a> -->
+                  <small class="text-muted ml-auto">April 2021</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <img class="card-img-top" data-src="/images/skeletonator.png" src="/images/skeletonator.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
+              <div class="card-body">
+                <h5>Skeletonator</h5>
+                <p class="card-text">
+                  A drawing automation tool for my Controls Engineering team at Dematic. 
+                  It utilises data exported from other departments to generate AutoCAD drawings.
+                  This allows an engineer to create the skeleton for layout drawings in minutes instead of the usual several hours.
+                  It's built completely in Python.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted ml-auto">May 2021</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <img class="card-img-top" data-src="/images/hevo_1.png" src="/images/hevo_1.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
+              <div class="card-body">
+                <h5>3D Pinter</h5>
+                <h6>Hypercube Evolution</h6>
+                <p class="card-text">
+                  A CoreXY design focussed on minimising the inertia of the gantry and the print head. 
+                  It's based on an open hardware design and uses a custom installation of open source firmware.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted ml-auto">January 2021</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <img class="card-img-top" data-src="/images/geneticCab_2.png" src="/images/geneticCab_2.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
+              <div class="card-body">
+                <h5>Genetic Algorithm Designer</h5>
+                <p class="card-text">
+                  A genetic algorithm in MATLAB that generates and optimises device placement across a conveyor network. 
+                  This was designed to automate work for the Controls Engineering team at Dematic.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted ml-auto">March 2021</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <a href="https://triangles.tobinsmit.com" target="_blank">
+                <img class="card-img-top" data-src="/images/triangles_2.png" src="/images/triangles_2.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
+              </a>
+              <div class="card-body">
+                <h5>Tri∆ngles</h5>
+                <p class="card-text">
+                  A course planner for trimesters at UNSW. 
+                  Students can add their subjects and interactively drag and drop them across various terms and years.
+                  Courses are coloured in green if their term offerings and prerequisites are satisfied, otherwise red.
+                  The database automatically scapes data from the university website weekly.
+                  This app supersedes joebangles and allows users to create an account and sync their data across devices in real time.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <a class="btn btn-sm btn-outline-primary" href="https://triangles.tobinsmit.com" target="_blank">Sign up</a>
+                  <small class="text-muted ml-auto">April 2020</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <a href="/sudoku" target="_blank">
+                <img class="card-img-top" data-src="/images/sudoku_2.png" src="/images/sudoku_2.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
               </a>
               <div class="card-body">
                 <h5>Sudoku Solver</h5>
-                <p class="card-text">I got stuck on a sudoku so I built a solver to finish it. Pretty sure it doesn't count as cheating ;)</p>
+                <p class="card-text">
+                  I got stuck on a sudoku so I built a solver to finish it. 
+                  Pretty sure it doesn't count as cheating 😉
+                </p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <a class="btn btn-sm btn-outline-primary" href="/sudoku">Try me</a>
+                  <a class="btn btn-sm btn-outline-primary" href="/sudoku" target="_blank">Try me</a>
                   <small class="text-muted ml-auto">January 2019</small>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6">
             <div class="card mb-4 shadow-sm">
-              <a href="https://joebangles.firebaseapp.com">
+              <a href="/">
+                <img class="card-img-top" data-src="/images/home_2.png" src="/images/home_2.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
+              </a>
+              <div class="card-body">
+                <h5>Personal Website</h5>
+                <p class="card-text">
+                  You're looking at it.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <a class="btn btn-sm btn-outline-primary" href="/">Home</a>
+                  <small class="text-muted ml-auto">August 2018</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card mb-4 shadow-sm" id="joebanglesCard">
+              <a href="https://joebangles.tobinsmit.com" target="_blank">
                 <img class="card-img-top" data-src="/images/joebangles.png" src="/images/joebangles.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
               </a>
               <div class="card-body">
                 <h5>joebangles</h5>
-                <p class="card-text">A timetable tool for UNSW to help organise trimesters. It searches and scapes the university website for degree and course details, ask student for subject selection, and generates a drag and drop timetable with prerequiste and term availability conditions.</p>
+                <p class="card-text">
+                  A timetable tool for UNSW to help organise trimesters. It searches and scapes the university 
+                  website for degree and course details, asks students for subject selection, and generates a 
+                  drag and drop timetable with prerequisite and term availability conditions.
+                </p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <a class="btn btn-sm btn-outline-primary" href="https://joebangles.tobinsmit.com">Visit</a>
+                  <a class="btn btn-sm btn-outline-primary" href="https://joebangles.tobinsmit.com" target="_blank">Visit</a>
                   <small class="text-muted ml-auto">September 2018</small>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6">
             <div class="card mb-4 shadow-sm">
-              <a href="/">
-                <img class="card-img-top" data-src="/images/home.png" src="/images/home.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
-              </a>
-              <div class="card-body">
-                <h5>This website</h5>
-                <p class="card-text">My personal site. Cause why not.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <a class="btn btn-sm btn-outline-primary" href="/">Home</a>
-                  <small class="text-muted ml-auto">Published August 2018</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card mb-4 shadow-sm">
-              <a href="https://yellow-brick.firebaseapp.com">
+              <a href="https://yellow-brick.firebaseapp.com" target="_blank">
                 <img class="card-img-top" data-src="/images/yellow-brick.png" src="/images/yellow-brick.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
               </a>
               <div class="card-body">
                 <h5>UNSW Exchange</h5>
-                <p class="card-text">A prototype forum platform designed to increase communication between students and teachers for courses at UNSW.</p>
-                <p class="card-text">Pitched to UNSW and now developing solutions with the Students as Partners team.</p>
+                <p class="card-text">
+                  A prototype forum platform designed to increase communication between students and teachers for courses at UNSW.
+                </p>
+                <p class="card-text">
+                  Pitched to UNSW and the joined Students as Partners Developer team.
+                </p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <a class="btn btn-sm btn-outline-primary" href="https://unswexchange.tobinsmit.com/">Log in</a>
+                  <a class="btn btn-sm btn-outline-primary" href="https://unswexchange.tobinsmit.com/" target="_blank">Log in</a>
                   <small class="text-muted ml-auto">June 2018</small>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card mb-4 shadow-sm">
-              <a href="https://www.studyeasyhsc.com">
-                <img class="card-img-top" data-src="/images/studyeasyabout.png" src="/images/studyeasyabout.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
-              </a>
-              <div class="card-body">
-                <h5>Study Easy HSC</h5>
-                <p class="card-text">A set of personalised study tools to help build effective study methods for students during the HSC.</p>
-                <p class="card-text">Currently under development.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <a class="btn btn-sm btn-outline-primary" href="https://www.studyeasyhsc.com">About</a>
-                  <small class="text-muted ml-auto">May 2018 - Present</small>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
       <h4>Plenty of more to come</h4>
-      <!-- <footer class="mastfoot mt-auto">
-        <div class="inner">
-          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-        </div>
-      </footer> -->
     </div>
 
 
@@ -149,6 +251,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  
+    <!-- Masonry -->
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
   </body>
 </html>
 

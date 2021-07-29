@@ -1,0 +1,7 @@
+- [ ] Add projects:
+  - [ ] Coffee Auto. More details
+  - [ ] Janus. Link to article
+  - [ ] Mouse bot assignment
+  - [ ] Robot arm assignment
+  - [ ] Secret knock detector
+- [ ] Change order of nav to resume, portfolio
