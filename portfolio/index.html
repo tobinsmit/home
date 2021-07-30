@@ -18,7 +18,7 @@
 
   <body class="text-center">
 
-    <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main class="container py-3 px-0 px-xs-3">
       <nav class="navbar navbar-expand-sm navbar-tobin navbar-light">
 
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,10 +52,10 @@
         <p class="lead">These are just a few of my notable projects.</p>
       </div>
 
-      <div class="album xlarge py-5 mx-auto">
-        <div class="card-columns" data-masonry='{"percentPosition": true }'> 
+      <div class="container xlarge py-5">
+        <div class="row" id="wall"> 
           
-          <div class="col-lg-4 col-md-6">
+          <div class="ccol-lg-4 col-md-6 mb-4">
             <div class="card mb-4 shadow-sm">
               <img class="card-img-top" data-src="/images/coffee-auto.jpg" src="/images/coffee-auto.jpg" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">              <div class="card-body">
                 <h5>Automated a small-batch coffee roaster</h5>
@@ -71,7 +71,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
+          <div class="ccol-lg-4 col-md-6 mb-4">
             <div class="card mb-4 shadow-sm">
               <img class="card-img-top" data-src="/images/thesis_1.png" src="/images/thesis_1.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
               <div class="card-body">
@@ -90,9 +90,9 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
+          <div class="ccol-lg-4 col-md-6 mb-4">
             <div class="card mb-4 shadow-sm">
-              <img class="card-img-top" data-src="/images/skeletonator.png" src="/images/skeletonator.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
+              <img id="largestImage" class="card-img-top" data-src="/images/skeletonator.png" src="/images/skeletonator.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
               <div class="card-body">
                 <h5>Skeletonator</h5>
                 <p class="card-text">
@@ -108,7 +108,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
+          <div class="ccol-lg-4 col-md-6 mb-4">
             <div class="card mb-4 shadow-sm">
               <img class="card-img-top" data-src="/images/hevo_1.png" src="/images/hevo_1.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
               <div class="card-body">
@@ -125,7 +125,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
+          <div class="ccol-lg-4 col-md-6 mb-4">
             <div class="card mb-4 shadow-sm">
               <img class="card-img-top" data-src="/images/geneticCab_2.png" src="/images/geneticCab_2.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
               <div class="card-body">
@@ -141,7 +141,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
+          <div class="ccol-lg-4 col-md-6 mb-4">
             <div class="card mb-4 shadow-sm">
               <a href="https://triangles.tobinsmit.com" target="_blank">
                 <img class="card-img-top" data-src="/images/triangles_2.png" src="/images/triangles_2.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
@@ -163,7 +163,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
+          <div class="ccol-lg-4 col-md-6 mb-4">
             <div class="card mb-4 shadow-sm">
               <a href="/sudoku" target="_blank">
                 <img class="card-img-top" data-src="/images/sudoku_2.png" src="/images/sudoku_2.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
@@ -182,7 +182,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
+          <div class="ccol-lg-4 col-md-6 mb-4">
             <div class="card mb-4 shadow-sm">
               <a href="/">
                 <img class="card-img-top" data-src="/images/home_2.png" src="/images/home_2.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
@@ -200,7 +200,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
+          <div class="ccol-lg-4 col-md-6 mb-4">
             <div class="card mb-4 shadow-sm" id="joebanglesCard">
               <a href="https://joebangles.tobinsmit.com" target="_blank">
                 <img class="card-img-top" data-src="/images/joebangles.png" src="/images/joebangles.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
@@ -220,7 +220,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
+          <div class="ccol-lg-4 col-md-6 mb-4">
             <div class="card mb-4 shadow-sm">
               <a href="https://yellow-brick.firebaseapp.com" target="_blank">
                 <img class="card-img-top" data-src="/images/yellow-brick.png" src="/images/yellow-brick.png" data-holder-rendered="true" style="height: auto; width: 100%; display: block;">
@@ -244,7 +244,7 @@
         </div>
       </div>
       <h4>Plenty of more to come</h4>
-    </div>
+    </main>
 
 
     <!--  ================================================== -->
@@ -254,6 +254,26 @@
   
     <!-- Masonry -->
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+  
+    <script>
+      console.log("Running")
+
+      var largestImage = document.querySelector('#largestImage')
+
+      function addMasonryToWall() {
+        console.log("addMasonryToWall")
+        document.getElementById("wall").setAttribute("data-masonry",'{"percentPosition": true, "init-layout": false}')
+      }
+
+      if (largestImage.complete) {
+        addMasonryToWall()
+      } else {
+        largestImage.addEventListener('load', addMasonryToWall)
+        largestImage.addEventListener('error', function() {
+            alert('error')
+        })
+      }
+    </script>
   </body>
 </html>
 
