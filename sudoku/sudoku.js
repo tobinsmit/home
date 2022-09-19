@@ -366,7 +366,7 @@ function backtrack() {
 
       showMatrix(soln)
       
-      if (!confirm("Found a solution, do you want to continue?")) {
+      if (!confirm("Found a solution! Do you want to continue solving for more solutions?")) {
         userStoppedAtFirstSolution = true
         break
       }
